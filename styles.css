@@ -37,7 +37,7 @@
 }
 
 :root {
-    --bg-black: #0A0A0A;
+    --bg-black: #000000;
     --text-main: #ffffff;
     --neon-green: #DFFF00;
     
@@ -61,15 +61,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Texture Container WebGL (GPU Accelerated Map) */
-.texture-container {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    z-index: 0;
-    pointer-events: none;
-    mix-blend-mode: difference; /* Smart Contrast across the whole site instantly */
-    opacity: 0.6; /* Malha viva 60% fixa opacidade garantida */
-}
+
 
 /* Typography Lando style */
 .giant-text {
@@ -114,14 +106,31 @@ body {
     transition: background 0.3s ease, padding 0.3s ease;
 }
 
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 22px; /* Espaço aumentado para afastar as duas logos */
+    text-decoration: none;
+}
+
+.logo-ambios {
+    height: 31px; /* 10% adicional de redução sobre o request anterior */
+    filter: brightness(0) invert(1); /* Converte diretamente para Branca usando matemática gráfica pura e nativa */
+    object-fit: contain;
+}
+
+.logo-rb777 {
+    height: 29px; /* Aumentado 15% como solicitado mantendo o Drop Shadow */
+    filter: drop-shadow(2px 2px 0px #000); /* Drop shadow base pra nao sumir em branco caso hero troque */
+    object-fit: contain;
+}
+
 .navbar.scrolled {
     background: rgba(5,5,5,0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(204, 255, 0, 0.2);
-    padding: 15px 40px;
+    padding: 20px 40px;
 }
-
-.logo img { height: 45px; filter: drop-shadow(2px 2px 0px #000); }
 
 nav ul {
     list-style: none;
@@ -130,17 +139,37 @@ nav ul {
 }
 
 nav a {
+    font-family: 'IBM Plex Sans', sans-serif;
     color: #fff;
     text-decoration: none;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 1rem;
-    font-style: italic;
+    font-style: normal;
     letter-spacing: 1px;
     transition: color 0.3s;
 }
 
 nav a:hover { color: var(--neon-green); text-shadow: 0 0 10px rgba(204, 255, 0, 0.5); }
+
+nav a:hover { color: var(--neon-green); text-shadow: 0 0 10px rgba(204, 255, 0, 0.5); }
+/* Hamburger Base (Hidden on Desktop) */
+.hamburger {
+    display: none; /* Only visible on mobile */
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1001; /* Above absolute ul */
+}
+
+.hamburger .bar {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+    border-radius: 2px;
+}
+
 /* Hero Section */
 .hero-section {
     height: 100vh;
@@ -360,31 +389,108 @@ nav a:hover { color: var(--neon-green); text-shadow: 0 0 10px rgba(204, 255, 0, 
     right: 0%; /* Alinhado levemente à direita fugindo do encapsulamento */
 }
 
-/* 3D Spline Cockpit Section */
-.spline-cockpit-section {
+/* TextRoll Typographic Section */
+.textroll-section {
     position: relative;
-    height: 100vh;
-    background: transparent; /* Permite que a Malha Hexagonal (Vídeo HD) seja vista por baixo */
+    min-height: 80vh;
+    background: transparent;
     z-index: 5;
-    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 80px 20px;
+    overflow: hidden; /* Cobre todo o transbordamento do neon-flow caso algo passe da borda base */
+    cursor: default; /* Interatividade indicando algo de clique disponivel */
+}
+
+/* Master Wrapper Neon Flow (Abaixa o limite z para que os filhos navegem) */
+#neon-flow-wrapper {
+    position: relative;
+    width: 100%;
+    z-index: 5; /* Fica acima da malha padrao base do site mas abaixo de modais */
+    background: transparent;
+    cursor: default; 
+}
+
+/* Fundo 3D dos cabos neon (Atribuição direta Canvas Vanilla conectada no topo do Wrapper Global) */
+#tubes-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;
+    pointer-events: none; /* Crucial para clicks atravessarem ate' modulos invisiveis do Tubes Cursor e aos botões/videos do overlay */
+}
+
+/* Wrapper Utility (Simula a prop `pointer-events-none` padrão do Tailwind do componente pai) */
+.pointer-events-none {
+    pointer-events: none;
+    z-index: 10;
+    position: relative;
+}
+
+.textroll-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px; /* Totalmente zerado para esmagar ao maximo as caixas na física base */
+}
+
+/* Base class for the raw element */
+.textroll-word {
+    font-size: clamp(3rem, 10vw, 7rem); /* Gigante conforme text-5xl -> text-7xl */
+    font-weight: 800; /* Ultra-bold */
+    text-transform: uppercase;
+    color: #ff6600; /* Base color approved */
+    line-height: 1.1; /* Aumentado para evitar corte dos acentos (É, Í) */
+    margin: -16px 0; /* Espremido no limite máximo da legibilidade sem devorar interações */
+    padding: 0.12em 0; /* Respiro vertical interno levemente maior */
+    position: relative;
+    cursor: pointer;
+    overflow: hidden; /* Corta o bleed da animação limitando os vazamentos visuais */
+    display: inline-block;
+    pointer-events: auto; /* Retoma os pointer events que cortamos do container para funcionar o hover individual */
+}
+
+/* Wrapper isolado para cada letra gerado pelo JS */
+.textroll-char {
+    position: relative;
+    display: inline-block;
     overflow: hidden;
 }
 
-.spline-viewport {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    transform: translateY(-10%); /* Sobe a cena exatos 10% */
+/* Identificador para tratar o espaço em branco da frase 'BORTOLI 777' */
+.textroll-char.space {
+    width: 0.5em; /* Garante que o span branco preserve proporcao horizontal */
 }
 
-spline-viewer {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    pointer-events: none; /* Desativa Pan/Zoom por scroll no iframe garantindo que o scroll de página flua livremente */
+/* Bloco de letra Original (Exibido primeiro) */
+.char-original {
+    display: inline-block;
+    color: #ff6600;
+    transform: translateY(0);
+    transition: transform 0.4s cubic-bezier(0.3, 0.8, 0.2, 1);
+}
+
+/* Bloco de letra Overlay (Fica ancorado em baixo num estado oculto/clippado) */
+.char-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    color: var(--neon-green); /* Nova Cor Verde Neon */
+    transform: translateY(100%); /* Esperando fora da view 100% pra baixo */
+    transition: transform 0.4s cubic-bezier(0.3, 0.8, 0.2, 1);
+}
+
+/* Evento propulsor HOVER disparando ambas as transições verticalmente (Roll) */
+.textroll-word:hover .char-original {
+    transform: translateY(-100%);
+}
+
+.textroll-word:hover .char-hover {
+    transform: translateY(0);
 }
 
 
@@ -491,11 +597,14 @@ spline-viewer {
 }
 
 .btn-download {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
     background: transparent;
     border: 3px solid var(--neon-green);
     color: var(--neon-green);
-    padding: 18px 40px;
+    padding: 15px 35px;
     font-weight: 700;
     font-style: italic;
     font-size: 1.2rem;
@@ -512,6 +621,24 @@ spline-viewer {
     box-shadow: 7px 7px 0px #000;
 }
 
+.btn-icon {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1.4rem;
+    display: inline-block;
+}
+
+.btn-download:hover .btn-icon {
+    animation: download-loop 0.8s ease-in-out infinite;
+}
+
+@keyframes download-loop {
+    0% { transform: translateY(-5px); opacity: 0; }
+    30% { opacity: 1; }
+    70% { transform: translateY(5px); opacity: 1; }
+    100% { transform: translateY(5px); opacity: 0; }
+}
+
 .media-tabs-container {
     width: 100%;
 }
@@ -524,29 +651,50 @@ spline-viewer {
 }
 
 .tab-btn {
-    background: #111;
-    color: #fff;
-    border: 2px solid #333;
-    padding: 15px 40px;
+    background: #0d0d0d;
+    color: #444; /* fosco (dark mode) */
+    border: 3px solid #333;
+    border-radius: 8px; /* F1 steering wheel style */
+    padding: 18px 45px;
     font-size: 1.2rem;
     font-weight: 700;
     font-style: italic;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: 'IBM Plex Sans', sans-serif;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+    position: relative;
+    overflow: hidden;
 }
 
 .tab-btn:hover {
-    border-color: var(--neon-green);
+    border-color: #555;
+    color: #fff;
 }
 
 .tab-btn.active {
-    background: var(--neon-green);
-    color: #000;
+    background: #1a1a1a;
+    color: #fff;
     border-color: var(--neon-green);
-    box-shadow: 0 0 20px rgba(204,255,0,0.4);
+    box-shadow: 0 0 15px rgba(204,255,0,0.2), inset 0 0 10px rgba(204,255,0,0.1);
     transform: translateY(-5px);
+}
+
+.tab-btn[data-target="diamante"].active {
+    animation: neon-pulse 1.5s infinite alternate;
+    color: var(--neon-green);
+}
+
+@keyframes neon-pulse {
+    0% {
+        box-shadow: 0 0 15px rgba(204,255,0,0.4), inset 0 0 10px rgba(204,255,0,0.2);
+        border-color: rgba(204,255,0, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 35px rgba(204,255,0,1), 0 0 60px rgba(204,255,0,0.6), inset 0 0 20px rgba(204,255,0,0.5);
+        border-color: #D2FF00;
+    }
 }
 
 .media-screens {
@@ -574,24 +722,56 @@ spline-viewer {
 
 .tier-card {
     padding: 60px 50px;
-    background: #111;
+    background: rgba(15, 15, 15, 0.45);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     position: relative;
     overflow: hidden;
     max-width: 800px;
     margin: 0 auto;
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
 }
 
-.tier-card::before {
-    content: '';
+.card-bg {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 12px;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+    mix-blend-mode: color-dodge;
 }
 
-/* Base colored lines */
-.tier-card.prata::before { background: var(--prata-color); }
-.tier-card.ouro::before { background: var(--ouro-color); }
-.tier-card.diamante::before { background: var(--diamante-color); }
+.energy-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px;
+    width: 0%;
+    z-index: 2;
+}
+
+.tier-card.prata .energy-bar { background: var(--prata-color); box-shadow: 0 0 15px var(--prata-color); }
+.tier-card.ouro .energy-bar { background: var(--ouro-color); box-shadow: 0 0 15px var(--ouro-color); }
+.tier-card.diamante .energy-bar { background: var(--diamante-color); box-shadow: 0 0 25px var(--diamante-color), 0 0 10px #fff; }
+
+.media-screen.active .energy-bar {
+    animation: load-bar 1.2s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+@keyframes load-bar {
+    0% { width: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    100% { width: 100%; opacity: 1; }
+}
+
+.tier-name, .tier-price, .tier-benefits {
+    position: relative;
+    z-index: 2;
+}
 
 .tier-name {
     font-size: 3rem;
@@ -607,12 +787,61 @@ spline-viewer {
     margin-bottom: 40px;
     color: #fff;
     text-shadow: 2px 2px 0px #000;
+    position: relative;
+    display: inline-block;
+}
+
+.tier-price::before,
+.tier-price::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    opacity: 0;
+}
+
+.tier-price:hover::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1;
+    clip-path: polygon(0 20%, 100% 20%, 100% 45%, 0 45%);
+    animation: glitch-anim-1 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
+    opacity: 1;
+}
+
+.tier-price:hover::after {
+    left: -2px;
+    text-shadow: -2px 0 #00fff9, 2px 2px #D2FF00;
+    clip-path: polygon(0 60%, 100% 60%, 100% 85%, 0 85%);
+    animation: glitch-anim-2 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+    opacity: 1;
+}
+
+@keyframes glitch-anim-1 {
+    0% { clip-path: polygon(0 20%, 100% 20%, 100% 45%, 0 45%); transform: translate(2px, 2px); }
+    20% { clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%); transform: translate(-2px, -2px); }
+    40% { clip-path: polygon(0 10%, 100% 10%, 100% 40%, 0 40%); transform: translate(2px, 0); }
+    60% { clip-path: polygon(0 30%, 100% 30%, 100% 55%, 0 55%); transform: translate(-2px, 2px); }
+    80% { clip-path: polygon(0 5%, 100% 5%, 100% 20%, 0 20%); transform: translate(2px, -2px); }
+    100% { clip-path: polygon(0 25%, 100% 25%, 100% 50%, 0 50%); transform: translate(0, 0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip-path: polygon(0 60%, 100% 60%, 100% 85%, 0 85%); transform: translate(-2px, 2px); }
+    20% { clip-path: polygon(0 65%, 100% 65%, 100% 90%, 0 90%); transform: translate(2px, -2px); }
+    40% { clip-path: polygon(0 50%, 100% 50%, 100% 70%, 0 70%); transform: translate(-2px, 0); }
+    60% { clip-path: polygon(0 70%, 100% 70%, 100% 95%, 0 95%); transform: translate(2px, 2px); }
+    80% { clip-path: polygon(0 55%, 100% 55%, 100% 80%, 0 80%); transform: translate(-2px, -2px); }
+    100% { clip-path: polygon(0 65%, 100% 65%, 100% 85%, 0 85%); transform: translate(0, 0); }
 }
 
 /* Coloring specific to tier elements */
 .prata .tier-name { color: var(--prata-color); }
 .ouro .tier-name { color: var(--ouro-color); }
 .diamante .tier-name { color: var(--diamante-color); }
+
 
 .tier-benefits {
     list-style: none;
@@ -704,28 +933,91 @@ footer {
     margin-left: 10px;
 }
 
-/* Responsive Styles */
+/* =========================================
+   RESPONSIVE DESIGN (DESKTOP / MOBILE)
+   ========================================= */
+
 @media (max-width: 1024px) {
     .giant-text { font-size: 8rem; }
     .history-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 768px) {
-    .navbar nav { display: none; }
+@media screen and (max-width: 768px) {
+    /* Typographic Rescales */
+    .giant-text { font-size: clamp(3.5rem, 12vw, 6rem); text-shadow: 3px 3px 0 #000; }
+    .section-heading { font-size: clamp(2.5rem, 8vw, 4rem); }
+    
+    /* Navbar & Hamburger */
     .navbar { padding: 15px 20px; }
-    .navbar.scrolled { padding: 15px 20px; }
-    .hero-section { padding: 40px 20px; }
-    .giant-text { font-size: 5rem; text-shadow: 3px 3px 0 #000; }
-    .hero-number { font-size: 15rem; }
-    .section-heading { font-size: 2.5rem; }
-    .marquee-content img { height: 200px; }
     
-    .history-section, .sponsorship-section {
-        padding: 80px 20px;
-    }
+    .logo-ambios { height: 26px; } /* Proporcao mobile mantida dos 25% de corte */
+    .logo-rb777 { height: 25px; } /* Aumentada 15% para o display mobile */
     
-    .media-tabs {
+    .hamburger { display: block; z-index: 101; }
+    
+    nav ul.nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(15px);
+        display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 999;
     }
+    
+    nav ul.nav-links.nav-active { right: 0; }
+    
+    nav a { font-size: 1.5rem; }
+    
+    /* Hamburger Animation */
+    .hamburger.toggle .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); background-color: var(--neon-green); }
+    .hamburger.toggle .bar:nth-child(2) { opacity: 0; }
+    .hamburger.toggle .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); background-color: var(--neon-green); }
+    
+    /* Hero Section */
+    .hero-section { padding: 0 20px; }
+    .hero-name-img { max-height: 40vh; }
+    .hero-number-img { max-height: 15vh; margin-top: 10px; }
+    
+    /* Marquee */
+    .marquee-content img { height: 200px; border-width: 2px; }
+    .marquee-section { padding: 20px 0; margin: 60px 0; }
+    
+    /* History Section */
+    .history-section { padding: 60px 20px; }
+    .history-grid { grid-template-columns: 1fr; gap: 50px; }
+    .history-text { font-size: 1.1rem; }
+    .history-text .lead { font-size: 1.8rem; }
+    .history-video-wrapper { border-width: 2px; width: 100%; left: 0; }
+    .photo-top-left, .photo-bottom-right { width: 50%; }
+    .photo-top-left { top: -10%; left: -5%; }
+    .photo-bottom-right { bottom: -10%; right: -5%; }
+    
+    
+    /* Textroll Tweak */
+    .textroll-section { height: auto; min-height: 50vh; padding: 40px 10px; }
+    .textroll-container { gap: 10px; }
+    
+    /* Sponsorship / Cards */
+    .sponsorship-section { padding: 80px 20px; }
+    .sponsorship-header p { font-size: 1.1rem; }
+    .media-tabs { flex-direction: column; width: 100%; }
+    .tab-btn { width: 100%; padding: 15px; font-size: 1rem; text-align: center; }
+    .tier-card { padding: 40px 20px; }
+    .tier-name { font-size: 2.2rem; }
+    .tier-price { font-size: 2.5rem; }
+    .tier-benefits li { font-size: 1rem; margin-bottom: 20px; }
+    
+    /* Footer */
+    .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+    footer { padding: 60px 20px 30px; }
+    .footer-logo img { height: 75px; margin: 0 auto; display: block; }
 }
