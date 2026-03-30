@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafael Bortoli 777 | Hub Oficial</title>
+    <meta name="description" content="Site oficial de Rafael Bortoli. Piloto de Autocross e Mídia Kit.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Spline 3D Viewer Module -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.7/build/spline-viewer.js"></script>
+</head>
+<body>
+    <!-- Textura Hexagonal WebGL (Malha Viva) -->
+    <video id="bg-video" src="freepik_gera-um-textura-que-fique-em-movimento-com-essa-imagem_0001.mp4" loop muted autoplay playsinline style="display:none;"></video>
+    <canvas id="webgl-canvas" class="texture-container"></canvas>
+
+    <header class="navbar">
+        <div class="logo">
+            <img src="rb 777.png" alt="R777 Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#hero">Piloto</a></li>
+                <li><a href="#historia">Off Track</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#patrocinadores">Mídia Kit</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-bg" style="background-image: url('@gilgomesfoto103.JPG');"></div>
+            <div class="hero-content hero-stacked">
+                <img src="nome capa.png" alt="Rafael Bortoli" class="hero-name-img parallax-text">
+                <img src="Ativo 11.png" alt="777" class="hero-number-img parallax-text">
+            </div>
+        </section>
+
+        <!-- Marquee / Gallery Section -->
+        <section class="marquee-section">
+            <div class="marquee">
+                <div class="marquee-content">
+                    <img src="@gilgomesfoto103.JPG" alt="Track Action">
+                    <img src="@gilgomesfoto6.JPG" alt="Track Action">
+                    <img src="@gilgomesfoto58.JPG" alt="Track Action">
+                    <img src="@gilgomesfoto60.JPG" alt="Track Action">
+                    <img src="@gilgomesfoto64.JPG" alt="Track Action">
+                    <img src="@gilgomesfoto79.JPG" alt="Track Action">
+                    <img src="@gilgomesfoto81.JPG" alt="Track Action">
+                    <img src="@gilgomesfoto85.JPG" alt="Track Action">
+                    <!-- Duplicate for infinite looping effect -->
+                    <img src="@gilgomesfoto103.JPG" alt="Track Action">
+                    <img src="@gilgomesfoto6.JPG" alt="Track Action">
+                    <img src="@gilgomesfoto58.JPG" alt="Track Action">
+                    <img src="@gilgomesfoto60.JPG" alt="Track Action">
+                    <img src="@gilgomesfoto64.JPG" alt="Track Action">
+                    <img src="@gilgomesfoto79.JPG" alt="Track Action">
+                    <img src="@gilgomesfoto81.JPG" alt="Track Action">
+                    <img src="@gilgomesfoto85.JPG" alt="Track Action">
+                </div>
+            </div>
+        </section>
+
+        <!-- Bio / History Section -->
+        <section id="historia" class="history-section">
+            <div class="history-grid">
+                <div class="history-text">
+                    <h2 class="section-heading">A HISTÓRIA</h2>
+                    <p class="lead">"A vida é uma corrida."</p>
+                    <p>Meu nome é Rafael Bortoli e tenho 42 anos de idade. Sou Pai, Esposo, Filho e um apaixonado por corridas de carro.</p>
+                    <p>Quando estou nas pistas, sinto a adrenalina correndo pelas veias. Cada curva, cada ultrapassagem, cada derrapagem é uma emoção única. A velocidade me fascina, e estar atrás do volante é como voar rente ao asfalto.</p>
+                    <p>Além das corridas, sou um dos sócios fundadores da Natter, uma empresa do setor agropecuário pioneira em soluções tecnológicas. Se você me encontrar nos autódromos, estarei lá acelerando, vibrando com os motores roncando na reta. Mas também me verá nos campos de cultivo, estudando como a inovação pode transformar a agricultura.</p>
+                    
+                    <div class="signature-wrapper">
+                        <img src="Ativo 2.png" alt="Assinatura Rafael Bortoli" class="signature-img">
+                        <img src="rb 777.png" alt="Logo R777" class="signature-logo">
+                    </div>
+                </div>
+                <div class="history-image">
+                    <img src="@gilgomesfoto96.JPG" class="history-overlay-photo photo-top-left" alt="Rafael em Ação" loading="lazy">
+                    <div class="history-video-wrapper">
+                        <video data-src="kling_20260326_作品_Cinematic__5670_0.mp4" class="parallax-img lazy-video" autoplay loop muted playsinline disablePictureInPicture preload="none"></video>
+                    </div>
+                    <img src="@gilgomesfoto81.JPG" class="history-overlay-photo photo-bottom-right" alt="Carro em Ação" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- 3D Spline Cockpit Section -->
+        <section class="spline-cockpit-section" id="phrase-section">
+            <div class="spline-viewport">
+                <!-- Fundo transparente e eventos globais ativos para Mouse Tracking sem Scroll/Pan hijack -->
+                <spline-viewer url="https://prod.spline.design/5aysUtayCt0WCWCS/scene.splinecode" events-target="global" power-preference="high-performance"></spline-viewer>
+            </div>
+        </section>
+
+        <!-- Scroll Gallery Section (Rafael Bortoli Photos) -->
+        <section id="galeria" class="scroll-gallery-section">
+            <div class="gallery-viewport">
+                <div class="gallery-content">
+                    <div class="gallery-item" data-speed="0.8" style="left: 5vw; top: 15%; width: 200px;">
+                        <img src="novas fotos/@gilgomesfoto23.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="1.2" style="left: 20vw; top: 60%; width: 280px;">
+                        <img src="novas fotos/@gilgomesfoto24.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="0.6" style="left: 38vw; top: 10%; width: 150px;">
+                        <img src="novas fotos/@gilgomesfoto25.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="1.1" style="left: 52vw; top: 40%; width: 250px;">
+                        <img src="novas fotos/@gilgomesfoto27.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="0.9" style="left: 68vw; top: 75%; width: 180px;">
+                        <img src="novas fotos/@gilgomesfoto34.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="1.3" style="left: 85vw; top: 20%; width: 300px;">
+                        <img src="novas fotos/@gilgomesfoto43.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="0.7" style="left: 105vw; top: 60%; width: 160px;">
+                        <img src="novas fotos/@gilgomesfoto45.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="1.0" style="left: 115vw; top: 5%; width: 220px;">
+                        <img src="novas fotos/@gilgomesfoto48.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="1.2" style="left: 135vw; top: 45%; width: 290px;">
+                        <img src="novas fotos/@gilgomesfoto51.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="0.8" style="left: 155vw; top: 80%; width: 170px;">
+                        <img src="novas fotos/@gilgomesfoto72.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="1.0" style="left: 170vw; top: 15%; width: 240px;">
+                        <img src="novas fotos/@gilgomesfoto75.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="1.4" style="left: 190vw; top: 60%; width: 300px;">
+                        <img src="novas fotos/@gilgomesfoto80.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="0.9" style="left: 210vw; top: 25%; width: 190px;">
+                        <img src="novas fotos/@gilgomesfoto94.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="1.1" style="left: 225vw; top: 10%; width: 260px;">
+                        <img src="novas fotos/@gilgomesfoto102.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="0.6" style="left: 245vw; top: 55%; width: 150px;">
+                        <img src="novas fotos/@gilgomesfoto110.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="0.8" style="left: 260vw; top: 75%; width: 210px;">
+                        <img src="novas fotos/@gilgomesfoto111.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                    <div class="gallery-item" data-speed="1.2" style="left: 275vw; top: 30%; width: 280px;">
+                        <img src="novas fotos/@gilgomesfoto122.JPG" alt="Rafael Bortoli" class="gallery-photo lazyload" loading="lazy">
+                        <div class="gallery-signature"><img src="Ativo 11.png" alt="777"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsorship / Media Kit Tabbed -->
+        <section id="patrocinadores" class="sponsorship-section">
+            <div class="sponsorship-header">
+                <h2 class="section-heading">MÍDIA KIT</h2>
+                <p>Acelere conosco. Confira as cotas de patrocínio para estar no carro e no pódio nesta temporada.</p>
+                <a href="Apresentação Mídia KIT - 2026 1.pdf" target="_blank" class="btn-download">Baixar Apresentação (PDF)</a>
+            </div>
+
+            <div class="media-tabs-container">
+                <div class="media-tabs">
+                    <button class="tab-btn active" data-target="prata">PRATA</button>
+                    <button class="tab-btn" data-target="ouro">OURO</button>
+                    <button class="tab-btn" data-target="diamante">DIAMANTE</button>
+                </div>
+                
+                <div class="media-screens">
+                    <!-- Prata -->
+                    <div class="media-screen active prata-screen" id="prata">
+                        <div class="tier-card prata">
+                            <div class="tier-name">PRATA</div>
+                            <div class="tier-price">R$ 25 MIL</div>
+                            <ul class="tier-benefits">
+                                <li>2 Ingressos Camarote Final (Novembro, Cuiabá)</li>
+                                <li>Adesivo Pequeno no Carro</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Ouro -->
+                    <div class="media-screen ouro-screen" id="ouro">
+                        <div class="tier-card ouro">
+                            <div class="tier-name">OURO</div>
+                            <div class="tier-price">R$ 45 MIL</div>
+                            <ul class="tier-benefits">
+                                <li>4 Ingressos Camarote Final (Novembro, Cuiabá)</li>
+                                <li>Adesivo Médio no Carro</li>
+                                <li>Logo Pequena na Camiseta</li>
+                                <li>Menção nas Redes Sociais</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Diamante -->
+                    <div class="media-screen diamante-screen" id="diamante">
+                        <div class="tier-card diamante">
+                            <div class="tier-name">DIAMANTE</div>
+                            <div class="tier-price">R$ 65 MIL</div>
+                            <ul class="tier-benefits">
+                                <li>6 Ingressos Camarote Final (Novembro, Cuiabá)</li>
+                                <li>Boné no Podium</li>
+                                <li>Logo na Camiseta do Podium</li>
+                                <li>Adesivo Grande no Carro</li>
+                                <li>Patch no Macacão</li>
+                                <li>Menção nas Redes Sociais</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <img src="rb 777.png" alt="R777 Logo">
+            </div>
+            <div class="footer-contact">
+                <h4>CONTATO COMERCIAL</h4>
+                <a href="mailto:comunicacao@natter.com.br" class="email-link">comunicacao@natter.com.br</a>
+                <p>Apoio Oficial: <strong>Ambios</strong></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Rafael Bortoli 777. Todos os direitos reservados. <em>A Vida é uma Corrida.</em></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
