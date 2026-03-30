@@ -18,7 +18,10 @@
 
     <header class="navbar">
         <div class="logo">
-            <a href="#"><img src="Ativo 7.png" alt="RB 777 Logo"></a>
+            <a href="#" class="logo-wrapper">
+                <img src="Ativo 7.png" alt="Ambios Logo" class="logo-ambios">
+                <img src="rb 777.png" alt="RB 777 Logo" class="logo-rb777">
+            </a>
         </div>
         <nav>
             <ul class="nav-links">
@@ -70,40 +73,47 @@
             </div>
         </section>
 
-        <!-- Bio / History Section -->
-        <section id="historia" class="history-section">
-            <div class="history-grid">
-                <div class="history-text">
-                    <h2 class="section-heading">A HISTÓRIA</h2>
-                    <p class="lead">"A vida é uma corrida."</p>
-                    <p>Meu nome é Rafael Bortoli e tenho 42 anos de idade. Sou Pai, Esposo, Filho e um apaixonado por corridas de carro.</p>
-                    <p>Quando estou nas pistas, sinto a adrenalina correndo pelas veias. Cada curva, cada ultrapassagem, cada derrapagem é uma emoção única. A velocidade me fascina, e estar atrás do volante é como voar rente ao asfalto.</p>
-                    <p>Além das corridas, sou um dos sócios fundadores da Natter, uma empresa do setor agropecuário pioneira em soluções tecnológicas. Se você me encontrar nos autódromos, estarei lá acelerando, vibrando com os motores roncando na reta. Mas também me verá nos campos de cultivo, estudando como a inovação pode transformar a agricultura.</p>
-                    
-                    <div class="signature-wrapper">
-                        <img src="Ativo 2.png" alt="Assinatura Rafael Bortoli" class="signature-img">
-                        <img src="rb 777.png" alt="Logo R777" class="signature-logo">
-                    </div>
-                </div>
-                <div class="history-image">
-                    <img src="@gilgomesfoto96.JPG" class="history-overlay-photo photo-top-left" alt="Rafael em Ação" loading="lazy">
-                    <div class="history-video-wrapper">
-                        <video data-src="kling_20260326_作品_Cinematic__5670_0.mp4" class="parallax-img lazy-video" autoplay loop muted playsinline disablePictureInPicture preload="none"></video>
-                    </div>
-                    <img src="@gilgomesfoto81.JPG" class="history-overlay-photo photo-bottom-right" alt="Carro em Ação" loading="lazy">
-                </div>
-            </div>
-        </section>
+        <!-- Master Wrapper para Neon Flow cobrindo História e Texto Rolante -->
+        <div id="neon-flow-wrapper">
+            <canvas id="tubes-canvas" style="touch-action: none;"></canvas>
 
-        <!-- 3D Spline Cockpit Section -->
-        <section class="spline-cockpit-section" id="phrase-section">
-            <div class="spline-viewport">
-                <!-- Fundo transparente e eventos globais ativos para Mouse Tracking sem Scroll/Pan hijack -->
-                <spline-viewer url="https://prod.spline.design/5aysUtayCt0WCWCS/scene.splinecode" events-target="global" power-preference="high-performance"></spline-viewer>
-                <!-- Overlays for Spline Watermark -->
-                <img src="Ativo 19.png" class="spline-overlay-logo" alt="Overlay">
+            <!-- Bio / History Section -->
+            <section id="historia" class="history-section">
+                <div class="history-grid">
+                    <div class="history-text">
+                        <h2 class="section-heading">A HISTÓRIA</h2>
+                        <p class="lead">"A vida é uma corrida."</p>
+                        <p>Meu nome é Rafael Bortoli e tenho 42 anos de idade. Sou Pai, Esposo, Filho e um apaixonado por corridas de carro.</p>
+                        <p>Quando estou nas pistas, sinto a adrenalina correndo pelas veias. Cada curva, cada ultrapassagem, cada derrapagem é uma emoção única. A velocidade me fascina, e estar atrás do volante é como voar rente ao asfalto.</p>
+                        <p>Além das corridas, sou um dos sócios fundadores da Natter, uma empresa do setor agropecuário pioneira em soluções tecnológicas. Se você me encontrar nos autódromos, estarei lá acelerando, vibrando com os motores roncando na reta. Mas também me verá nos campos de cultivo, estudando como a inovação pode transformar a agricultura.</p>
+                        
+                        <div class="signature-wrapper">
+                            <img src="Ativo 2.png" alt="Assinatura Rafael Bortoli" class="signature-img">
+                            <img src="rb 777.png" alt="Logo R777" class="signature-logo">
+                        </div>
+                    </div>
+                    <div class="history-image">
+                        <img src="@gilgomesfoto96.JPG" class="history-overlay-photo photo-top-left" alt="Rafael em Ação" loading="lazy">
+                        <div class="history-video-wrapper">
+                            <video data-src="kling_20260326_作品_Cinematic__5670_0.mp4" class="parallax-img lazy-video" autoplay loop muted playsinline disablePictureInPicture preload="none"></video>
+                        </div>
+                        <img src="@gilgomesfoto81.JPG" class="history-overlay-photo photo-bottom-right" alt="Carro em Ação" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- TextRoll Typographic Section -->
+            <section class="textroll-section" id="phrase-section">
+            <div class="textroll-container pointer-events-none">
+                <h2 class="textroll-word" data-text="VELOCIDADE">VELOCIDADE</h2>
+                <h2 class="textroll-word" data-text="CATIGURIA">CATIGURIA</h2>
+                <h2 class="textroll-word" data-text="ADRENALINA">ADRENALINA</h2>
+                <h2 class="textroll-word" data-text="FÉ">FÉ</h2>
+                <h2 class="textroll-word" data-text="FAMÍLIA">FAMÍLIA</h2>
+                <h2 class="textroll-word" data-text="BORTOLI 777">BORTOLI 777</h2>
             </div>
         </section>
+        </div>
 
         <!-- Scroll Gallery Section (Rafael Bortoli Photos) -->
         <section id="galeria" class="scroll-gallery-section">
