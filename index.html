@@ -14,22 +14,25 @@
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.7/build/spline-viewer.js"></script>
 </head>
 <body>
-    <!-- Textura Hexagonal WebGL (Malha Viva) -->
-    <video id="bg-video" src="freepik_gera-um-textura-que-fique-em-movimento-com-essa-imagem_0001.mp4" loop muted autoplay playsinline style="display:none;"></video>
-    <canvas id="webgl-canvas" class="texture-container"></canvas>
+
 
     <header class="navbar">
         <div class="logo">
-            <img src="rb 777.png" alt="R777 Logo">
+            <a href="#"><img src="Ativo 7.png" alt="RB 777 Logo"></a>
         </div>
         <nav>
-            <ul>
-                <li><a href="#hero">Piloto</a></li>
-                <li><a href="#historia">Off Track</a></li>
-                <li><a href="#galeria">Galeria</a></li>
-                <li><a href="#patrocinadores">Mídia Kit</a></li>
+            <ul class="nav-links">
+                <li><a href="#piloto">PILOTO</a></li>
+                <li><a href="#historia">MINHA HISTÓRIA</a></li>
+                <li><a href="#galeria">GALERIA</a></li>
+                <li><a href="#patrocinadores">MÍDIA KIT</a></li>
             </ul>
         </nav>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
     </header>
 
     <main>
@@ -97,6 +100,8 @@
             <div class="spline-viewport">
                 <!-- Fundo transparente e eventos globais ativos para Mouse Tracking sem Scroll/Pan hijack -->
                 <spline-viewer url="https://prod.spline.design/5aysUtayCt0WCWCS/scene.splinecode" events-target="global" power-preference="high-performance"></spline-viewer>
+                <!-- Overlays for Spline Watermark -->
+                <img src="Ativo 19.png" class="spline-overlay-logo" alt="Overlay">
             </div>
         </section>
 
@@ -181,7 +186,10 @@
             <div class="sponsorship-header">
                 <h2 class="section-heading">MÍDIA KIT</h2>
                 <p>Acelere conosco. Confira as cotas de patrocínio para estar no carro e no pódio nesta temporada.</p>
-                <a href="Apresentação Mídia KIT - 2026 1.pdf" target="_blank" class="btn-download">Baixar Apresentação (PDF)</a>
+                <a href="Apresentação Mídia KIT - 2026 1.pdf" target="_blank" class="btn-download">
+                    <span class="btn-text">DOWNLOAD DO MÍDIA KIT</span>
+                    <span class="btn-icon">↓</span>
+                </a>
             </div>
 
             <div class="media-tabs-container">
@@ -195,8 +203,10 @@
                     <!-- Prata -->
                     <div class="media-screen active prata-screen" id="prata">
                         <div class="tier-card prata">
+                            <div class="card-bg"></div>
+                            <div class="energy-bar"></div>
                             <div class="tier-name">PRATA</div>
-                            <div class="tier-price">R$ 25 MIL</div>
+                            <div class="tier-price" data-text="R$ 25 MIL">R$ 25 MIL</div>
                             <ul class="tier-benefits">
                                 <li>2 Ingressos Camarote Final (Novembro, Cuiabá)</li>
                                 <li>Adesivo Pequeno no Carro</li>
@@ -207,8 +217,10 @@
                     <!-- Ouro -->
                     <div class="media-screen ouro-screen" id="ouro">
                         <div class="tier-card ouro">
+                            <div class="card-bg"></div>
+                            <div class="energy-bar"></div>
                             <div class="tier-name">OURO</div>
-                            <div class="tier-price">R$ 45 MIL</div>
+                            <div class="tier-price" data-text="R$ 45 MIL">R$ 45 MIL</div>
                             <ul class="tier-benefits">
                                 <li>4 Ingressos Camarote Final (Novembro, Cuiabá)</li>
                                 <li>Adesivo Médio no Carro</li>
@@ -221,8 +233,10 @@
                     <!-- Diamante -->
                     <div class="media-screen diamante-screen" id="diamante">
                         <div class="tier-card diamante">
+                            <div class="card-bg"></div>
+                            <div class="energy-bar"></div>
                             <div class="tier-name">DIAMANTE</div>
-                            <div class="tier-price">R$ 65 MIL</div>
+                            <div class="tier-price" data-text="R$ 65 MIL">R$ 65 MIL</div>
                             <ul class="tier-benefits">
                                 <li>6 Ingressos Camarote Final (Novembro, Cuiabá)</li>
                                 <li>Boné no Podium</li>
