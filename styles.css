@@ -994,6 +994,7 @@ footer {
     .hero-number-img { width: 65vw; max-height: 20vh; margin-top: 0; }
     
     /* Marquee */
+    .marquee-content { animation-duration: 20s; }
     .marquee-content img { height: 180px; border-width: 2px; }
     .marquee-section { padding: 15px 0; margin: 40px 0; }
     
