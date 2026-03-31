@@ -255,7 +255,7 @@ nav a:hover { color: var(--neon-green); text-shadow: 0 0 10px rgba(204, 255, 0, 
 
 .marquee-content {
     display: flex;
-    animation: scroll 35s linear infinite;
+    animation: scroll 33.3s linear infinite;
     gap: 30px;
 }
 
